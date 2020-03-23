@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import SavedList from './Movies/SavedList';
 import MovieList from './Movies/MovieList';
 import Movie from './Movies/Movie';
+import addToSavedList from './Movies/Movie';
 
 const App = () => {
   const [savedList, setSavedList] = useState( [] );
@@ -16,14 +17,13 @@ const App = () => {
      
     <div>
       <SavedList list={savedList} />
-      <div> 
-        <Link to="/">Movie List</Link>
+      <div>
       <Switch>
         <Route path="/movies/:movieID">
-            <Movie />
+            <Movie addToSavedList = {addToSavedList}/>
         </Route>
         <Route path="/">
-            <MovieList getMovies = {savedList}/>
+            <MovieList />
         </Route>
       </Switch>
       </div>
